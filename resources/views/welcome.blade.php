@@ -70,44 +70,7 @@
                                     </div>
 
 
-                                    <div class="container py-3">
-                                        <table class="table table-success table-striped">
-                                            <thead>
-                                                <th>#</th>
-                                                <th>Nombres</th>
-                                                <th>Apellido</th>
-                                                <th>Profesion</th>
-
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-
-                                                    <td>2</td>
-                                                    <td>Luis</td>
-                                                    <td>Leon</td>
-                                                    <td>Electronico</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>3</td>
-                                                    <td>Luis</td>
-                                                    <td>Leon</td>
-                                                    <td>Electronico</td>
-                                                </tr>
-                                                <tr>
-
-                                                    <td>4</td>
-                                                    <td>Luis</td>
-                                                    <td>Leon</td>
-                                                    <td>Electronico</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                    <img class="img-fluid rounded" src="https://cdn.pixabay.com/photo/2019/08/19/07/45/dog-4415649_960_720.jpg" alt="">
-
-
+                                    
                                     
 
                                     <div class="pl-3">
