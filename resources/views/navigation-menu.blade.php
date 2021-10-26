@@ -11,9 +11,20 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
-                <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                <x-jet-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
+                    Home
                 </x-jet-nav-link>
+                {{-- agregamos navbar  --}}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-imagenes" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Imagenes
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown-imagenes">
+                      <li><a class="dropdown-item" href="{{ route('admin.files.index')}}">Ver imagenes</a></li>
+                      <li><a class="dropdown-item" href="{{ route('admin.files.create')}}">Crear imagenes</a></li>
+                    </ul>
+                  </li>
+                  {{-- fin de li --}}
             </ul>
 
             <!-- Right Side Of Navbar -->
