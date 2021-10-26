@@ -48,6 +48,8 @@ class FileController extends Controller
 
         $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
 
+        
+
         Image::make($request->file('file'))
             ->resize(1200, null, function($constraint){
                 $constraint->aspectRatio();
