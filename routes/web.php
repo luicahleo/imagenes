@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\HomeConttroller;
+use App\Http\Controllers\HomeController as ControllersHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ControllersHomeController::class, 'index'] );
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

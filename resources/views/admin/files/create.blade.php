@@ -15,12 +15,12 @@
         <div class="col">
             <h1> Subir imagenes</h1>
 
-            <form action="{{ route('admin.files.store') }}" 
+            {{-- <form action="{{ route('admin.files.store') }}" 
                 class="dropzone" 
                 id="my-awesome-dropzone" 
                 method="POST">
-            </form>
-            {{-- <div class="card">
+            </form> --}}
+            <div class="card">
                 <div class="card-body">
                     <form action="{{ route('admin.files.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -36,7 +36,7 @@
                         <button type="submit" class="btn btn-primary mt-4">Enviar</button>
                     </form>
                 </div>
-            </div> --}}
+            </div>
         </div>
     </div>
 </div>

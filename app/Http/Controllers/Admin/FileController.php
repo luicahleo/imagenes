@@ -11,6 +11,11 @@ use Intervention\Image\Facades\Image;
 
 class FileController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,10 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view('admin.files.index');
+        $files = File::where('user_id', auth()->user()->id)
+            ->orderBy('id', 'desc')
+            ->paginate(4);
+        return view('admin.files.index', compact('files'));
     }
 
     /**
@@ -44,29 +52,39 @@ class FileController extends Controller
             'file' => 'required|image'
         ]);
 
-        $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
+        //return $request->file('file')->store('public/imagenes');
 
-        $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
+        // $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
 
-        
+        // $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
 
-        Image::make($request->file('file'))
-            ->resize(1200, null, function($constraint){
-                $constraint->aspectRatio();
-            })
-            ->save($ruta);
 
-        // $imagenes =  $request->file('file')->store('public/imagenes');
-        // $url = Storage::url($imagenes);
 
-        // almacenamos en la base de datos
+        // Image::make($request->file('file'))
+        //     ->resize(1200, null, function($constraint){
+        //         $constraint->aspectRatio();
+        //     })
+        //     ->save($ruta);
 
+        $imagenes =  $request->file('file')->store('public/imagenes');
+        $url = Storage::url($imagenes);
+
+
+        // return $url;
+
+        // almaceno en la BD
         File::create([
-            'url' =>'/storage/imagenes/' . $nombre
+            'user_id' => auth()->user()->id,
+            'url' => $url
         ]);
 
+        // almacenamos en la base de datos
+        // File::create([
+        //     'url' =>'/storage/imagenes/' . $nombre
+        // ]);
+
         // redirigimos a ver imagenes
-       // return redirect()->route('admin.files.index');
+        return redirect()->route('admin.files.index');
     }
 
     /**

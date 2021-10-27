@@ -9,5 +9,10 @@ class File extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['url'];
+    protected $fillable = ['url', 'user_id'];
+
+ 
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }
