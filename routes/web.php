@@ -28,6 +28,6 @@ Route::get('admin', [HomeController::class, 'home'])->name('admin.home');
 Route::resource('admin/files', FileController::class)->names('admin.files');
 
 Route::get('storage-link', function () {
-    Artisan::call('storage-link');
+    Artisan::call('storage:link');
     
 });
