@@ -106,7 +106,7 @@ class FileController extends Controller
      */
     public function edit($file)
     {
-        return view('admin.files.index');
+        return view('admin.files.edit', compact('file'));
     }
 
     /**
@@ -127,8 +127,17 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($file)
+    public function destroy(File $file)
     {
-        //
+       // $file = File::where('id',$file)->first();
+
+        // hacemos uso del facade storage para borrar la imagen
+        $url = str_replace('storage','public',$file->url);
+        Storage::delete($url);
+
+        // ahora borramos el registro de la base datos
+        $file->delete();
+
+        return redirect()->route('admin.files.index')->with('eliminar','ok');
     }
 }

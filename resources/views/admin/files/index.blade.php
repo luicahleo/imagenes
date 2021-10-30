@@ -11,9 +11,14 @@
                 <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;">
 
                 <div class="card-footer">
-                    <a href="" class="btn btn-primary">Editar</a>
-                    <form action="" class="d-inline">
-                        <a type="submit" class="btn btn-danger" href="#" role="button">Eliminar</a>
+                    <a href="{{ route('admin.files.edit', $file->id)}}" class="btn btn-primary">Editar</a>
+
+                    <form action="{{route('admin.files.destroy', $file->id)}}" class="d-inline formulario-eliminar"
+                        method="POST">
+                        @method('delete')
+                        @csrf
+                        <button type="submit" class="btn btn-danger">Eliminar
+                        </button>
                     </form>
                 </div>
             </div>
@@ -30,5 +35,42 @@
 
 </div>
 
+@endsection
 
+@section('js')
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('eliminar')=='ok')
+<script>
+    Swal.fire(
+            'Eliminado!',
+            'La imagen se elimino con exito.',
+            'success'
+            )
+</script>
+@endif
+
+
+<script>
+    $('.formulario-eliminar').submit(function(e){
+        e.preventDefault();
+        
+        Swal.fire({
+        title: ' Estas seguro?',
+        text: "Esta imagen se eliminara definitivamente",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, eliminar!'
+        cancelButtonText: 'Cancelar'
+
+        }).then((result) => {
+        if (result.isConfirmed) {
+            this.submit();
+        }
+        })
+
+     });
+</script>
 @endsection
