@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
+
 class FileController extends Controller
 {
 
@@ -54,17 +55,18 @@ class FileController extends Controller
 
         //return $request->file('file')->store('public/imagenes');
 
-        // $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
+        //rescato la imagene y pido que me de su nombre
+        $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
 
-        // $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
+        $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
 
-
-
-        // Image::make($request->file('file'))
-        //     ->resize(1200, null, function($constraint){
-        //         $constraint->aspectRatio();
-        //     })
-        //     ->save($ruta);
+        // InterventioImagen para redimensionar la imagen.
+        // solo paso el ancho 1200 para que alto se redimensione automaticamente
+        Image::make($request->file('file'))
+            ->resize(1200, null, function($constraint){
+                $constraint->aspectRatio();
+            })
+            ->save($ruta);
 
         $imagenes =  $request->file('file')->store('public/imagenes');
         $url = Storage::url($imagenes);
