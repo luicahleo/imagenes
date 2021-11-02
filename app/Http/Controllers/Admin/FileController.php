@@ -28,6 +28,7 @@ class FileController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(4);
 
+// return $files;
         return view('admin.files.index', compact('files'));
     }
 
@@ -69,8 +70,8 @@ class FileController extends Controller
             })
             ->save($ruta);
 
-        $imagenes =  $request->file('file')->store('public/imagenes');
-        $url = Storage::url($imagenes);
+        // $imagenes =  $request->file('file')->store('public/imagenes');
+        // $url = Storage::url($imagenes);
 
 
         // return $url;
@@ -78,7 +79,7 @@ class FileController extends Controller
         // almaceno en la BD
         File::create([
             'user_id' => auth()->user()->id,
-            'url' => $url
+            'url' => '/storage/imagenes/'.$nombre
         ]);
 
         // almacenamos en la base de datos

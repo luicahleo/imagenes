@@ -8,9 +8,8 @@
         @foreach ($files as $file)
         <div class="col-4">
             <div class="card">
-                {{-- <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;"> --}}
+                <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;">
 
-                <img src="https://pixabay.com/static/img/logo_square.png" alt="">
                 <div class="card-footer">
                     <a href="{{ route('admin.files.edit', $file->id)}}" class="btn btn-primary">Editar</a>
 
@@ -57,21 +56,39 @@
         e.preventDefault();
         
         Swal.fire({
-        title: ' Estas seguro?',
-        text: "Esta imagen se eliminara definitivamente",
+        title: 'Esta seguro de borrar?',
+        text: "La imagen eliminada no se puede recuperar!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Si, eliminar!'
-        cancelButtonText: 'Cancelar'
-
+        confirmButtonText: 'Si, Eliminar!'
         }).then((result) => {
         if (result.isConfirmed) {
+           
             this.submit();
         }
         })
-
      });
+    // $('.formulario-eliminar').submit(function(e){
+    //     e.preventDefault();
+        
+    //     Swal.fire({
+    //     title: ' Estas seguro?',
+    //     text: "Esta imagen se eliminara definitivamente",
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonColor: '#3085d6',
+    //     cancelButtonColor: '#d33',
+    //     confirmButtonText: 'Si, eliminar!'
+    //     cancelButtonText: 'Cancelar'
+
+    //     }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         this.submit();
+    //     }
+    //     })
+
+    //  });
 </script>
 @endsection
