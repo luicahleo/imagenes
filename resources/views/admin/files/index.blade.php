@@ -11,7 +11,7 @@
                 <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;">
 
                 <div class="card-footer">
-                    <a href="{{ route('admin.files.edit', $file->id)}}" class="btn btn-primary">Editar</a>
+                    <a href="{{ route('admin.files.edit', $file->id)}}" class="btn btn-primary">Obtener URL</a>
 
                     <form action="{{route('admin.files.destroy', $file->id)}}" class="d-inline formulario-eliminar"
                         method="POST">
