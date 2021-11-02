@@ -8,8 +8,9 @@
         @foreach ($files as $file)
         <div class="col-4">
             <div class="card">
-                <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;">
+                {{-- <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;"> --}}
 
+                <img src="https://pixabay.com/static/img/logo_square.png" alt="">
                 <div class="card-footer">
                     <a href="" class="btn btn-primary">Editar</a>
                     <form action="" class="d-inline">

@@ -12,10 +12,10 @@ use Intervention\Image\Facades\Image;
 class FileController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -26,6 +26,7 @@ class FileController extends Controller
         $files = File::where('user_id', auth()->user()->id)
             ->orderBy('id', 'desc')
             ->paginate(4);
+
         return view('admin.files.index', compact('files'));
     }
 

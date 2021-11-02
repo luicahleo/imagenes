@@ -10,7 +10,9 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
                 @foreach ($files as $file)
                     <div class="card" style="width:18rem;">
-                        <img src="{{asset($file->url)}}" class="card-img-top" alt="...">
+                        {{-- <img src="{{asset($file->url)}}" class="card-img-top" alt="..."> --}}
+                        <img src="https://pixabay.com/static/img/logo_square.png" alt="">
+
                     </div>
                 @endforeach
             </div>
