@@ -2,8 +2,8 @@
 
 use App\Http\Controllers\Admin\FileController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\Admin\HomeConttroller;
 use App\Http\Controllers\HomeController as ControllersHomeController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,3 +26,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('admin', [HomeController::class, 'home'])->name('admin.home');
 Route::resource('admin/files', FileController::class)->names('admin.files');
+
+Route::get('storage-link', function () {
+    Artisan::call('storage:link');
+    
+});

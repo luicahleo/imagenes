@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
+
 class FileController extends Controller
 {
 
@@ -55,17 +56,18 @@ class FileController extends Controller
 
         //return $request->file('file')->store('public/imagenes');
 
-        // $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
+        //rescato la imagene y pido que me de su nombre
+        $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
 
-        // $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
+        $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
 
-
-
-        // Image::make($request->file('file'))
-        //     ->resize(1200, null, function($constraint){
-        //         $constraint->aspectRatio();
-        //     })
-        //     ->save($ruta);
+        // InterventioImagen para redimensionar la imagen.
+        // solo paso el ancho 1200 para que alto se redimensione automaticamente
+        Image::make($request->file('file'))
+            ->resize(1200, null, function($constraint){
+                $constraint->aspectRatio();
+            })
+            ->save($ruta);
 
         $imagenes =  $request->file('file')->store('public/imagenes');
         $url = Storage::url($imagenes);
@@ -107,7 +109,7 @@ class FileController extends Controller
      */
     public function edit($file)
     {
-        return view('admin.files.index');
+        return view('admin.files.edit', compact('file'));
     }
 
     /**
@@ -128,8 +130,17 @@ class FileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($file)
+    public function destroy(File $file)
     {
-        //
+       // $file = File::where('id',$file)->first();
+
+        // hacemos uso del facade storage para borrar la imagen
+        $url = str_replace('storage','public',$file->url);
+        Storage::delete($url);
+
+        // ahora borramos el registro de la base datos
+        $file->delete();
+
+        return redirect()->route('admin.files.index')->with('eliminar','ok');
     }
 }
