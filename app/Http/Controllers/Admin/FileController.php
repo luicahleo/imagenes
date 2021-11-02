@@ -13,10 +13,10 @@ use Intervention\Image\Facades\Image;
 class FileController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,8 +59,8 @@ class FileController extends Controller
 
         //rescato la imagene y pido que me de su nombre
         $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
-
-        $ruta = storage_path() . '\app\public\imagenes/' . $nombre;
+        
+        $ruta = storage_path() . '/app/public/imagenes/' . $nombre;
 
         // InterventioImagen para redimensionar la imagen.
         // solo paso el ancho 1200 para que alto se redimensione automaticamente
