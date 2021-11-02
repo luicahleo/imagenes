@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '2690ff6b4e6d107ad8237842bab77de427736900',
+        'reference' => '9a83317b1f82eef1078d20674ac4ef85f35594f2',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -463,7 +463,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '2690ff6b4e6d107ad8237842bab77de427736900',
+            'reference' => '9a83317b1f82eef1078d20674ac4ef85f35594f2',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(
@@ -545,6 +545,15 @@
             'install_path' => __DIR__ . '/../livewire/livewire',
             'aliases' => array(),
             'reference' => '991e5bd8a48e450d23cd55336964f916e92a6464',
+            'dev_requirement' => false,
+        ),
+        'misterphilip/maintenance-mode' => array(
+            'pretty_version' => '2.0.1',
+            'version' => '2.0.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../misterphilip/maintenance-mode',
+            'aliases' => array(),
+            'reference' => '13ddc22036078edef6f4e5d68b7fb73956451b66',
             'dev_requirement' => false,
         ),
         'mobiledetect/mobiledetectlib' => array(

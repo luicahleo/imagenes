@@ -181,6 +181,10 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
 
+
+        MisterPhilip\MaintenanceMode\MaintenanceModeServiceProvider::class,
+        MisterPhilip\MaintenanceMode\MaintenanceCommandServiceProvider::class,
+
     ],
 
     /*

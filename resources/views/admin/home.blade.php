@@ -6,7 +6,7 @@
 
 <div class="container">
 
-    <h1>ejemplo</h1>
+    <h1>pagina en construccion</h1>
 
     
 
