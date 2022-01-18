@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/';
+    public const HOME = 'https://biblus.us.es/bibing/imagenes/public/';
 
     /**
      * The controller namespace for the application.

@@ -15,6 +15,6 @@ class HomeController extends Controller
             ->paginate(8);
 
 
-        return view('welcome', compact('files'));
+        return view('admin.files.index', compact('files'));
     }
 }

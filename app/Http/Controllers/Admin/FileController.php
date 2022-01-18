@@ -60,7 +60,8 @@ class FileController extends Controller
         //rescato la imagene y pido que me de su nombre
         $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
         
-        $ruta = storage_path() . '/app/public/imagenes/' . $nombre;
+        // $ruta = storage_path() . '/app/public/imagenes/' . $nombre;
+        $ruta = storage_path() . '/app/public/imagenes_cine2/portadas/' . $nombre;
 
         // InterventioImagen para redimensionar la imagen.
         // solo paso el ancho 1200 para que alto se redimensione automaticamente
@@ -79,7 +80,7 @@ class FileController extends Controller
         // almaceno en la BD
         File::create([
             'user_id' => auth()->user()->id,
-            'url' => '/storage/imagenes/'.$nombre
+            'url' => '/storage/imagenes_cine2/portadas/'.$nombre
         ]);
 
         // almacenamos en la base de datos
@@ -99,7 +100,20 @@ class FileController extends Controller
      */
     public function show($file)
     {
-        return view('admin.files.index');
+        //$imagen = File::all();
+        $imagen = File::where('id', $file)->get('url');
+        //$url = $imagen->url;    
+        // $url = Storage::url($imagenes)
+        $url = $imagen->pluck('url');
+        $valor = $url[0];
+
+        $name_file = explode("/storage/imagenes_cine2/portadas/", $valor);
+        //dd($name_file[1]); este es el que tiene el string del nombre 
+
+        //unimos las dos cadenas
+        $value_to = "https://biblus.us.es/bibing/imagenes_cine2/portadas/".$name_file[1];
+        //return $value_to;
+       return view('admin.files.show', compact('value_to'));
     }
 
     /**

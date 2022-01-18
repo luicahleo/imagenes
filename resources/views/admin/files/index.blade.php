@@ -11,7 +11,7 @@
                 <img src="{{asset($file->url)}}" alt="" class="img-fluid" style="width:18rem;">
 
                 <div class="card-footer">
-                    <a href="{{ route('admin.files.edit', $file->id)}}" class="btn btn-primary">Obtener URL</a>
+                    <a href="{{ route('admin.files.show', $file->id)}}" class="btn btn-primary">Obtener URL</a>
 
                     <form action="{{route('admin.files.destroy', $file->id)}}" class="d-inline formulario-eliminar"
                         method="POST">
@@ -39,7 +39,6 @@
 
 @section('js')
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 @if (session('eliminar')=='ok')
 <script>
     Swal.fire(
@@ -54,7 +53,7 @@
 <script>
     $('.formulario-eliminar').submit(function(e){
         e.preventDefault();
-        
+
         Swal.fire({
         title: 'Esta seguro de borrar?',
         text: "La imagen eliminada no se puede recuperar!",
@@ -65,14 +64,14 @@
         confirmButtonText: 'Si, Eliminar!'
         }).then((result) => {
         if (result.isConfirmed) {
-           
+
             this.submit();
         }
         })
      });
     // $('.formulario-eliminar').submit(function(e){
     //     e.preventDefault();
-        
+
     //     Swal.fire({
     //     title: ' Estas seguro?',
     //     text: "Esta imagen se eliminara definitivamente",
