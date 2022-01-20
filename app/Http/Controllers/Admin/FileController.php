@@ -61,7 +61,7 @@ class FileController extends Controller
         $nombre = Str::random(10) . $request->file('file')->getClientOriginalName();
         
         // $ruta = storage_path() . '/app/public/imagenes/' . $nombre;
-        $ruta = storage_path() . '/app/public/imagenes_cine2/portadas/' . $nombre;
+        $ruta = storage_path() . '/app/public/imagenes_cine/portadas/' . $nombre;
 
         // InterventioImagen para redimensionar la imagen.
         // solo paso el ancho 1200 para que alto se redimensione automaticamente
@@ -80,7 +80,7 @@ class FileController extends Controller
         // almaceno en la BD
         File::create([
             'user_id' => auth()->user()->id,
-            'url' => '/storage/imagenes_cine2/portadas/'.$nombre
+            'url' => '/storage/imagenes_cine/portadas/'.$nombre
         ]);
 
         // almacenamos en la base de datos
